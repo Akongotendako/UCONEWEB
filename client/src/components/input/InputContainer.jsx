@@ -4,23 +4,20 @@ import { Input, VStack } from "@chakra-ui/react";
 import { placeholders } from "@/utils/placeholders";
 import userStore from "@/zustand/user/userStore";
 
-const InputContainer = ({formType, name, title, mt }) => {
+const InputContainer = ({ formType, name, title, mt }) => {
+  const { profile, signin, signup } = userStore();
 
+  const user = [
+    {
+      type: "profile",
+    },
+  ];
 
-    const {profile, signin, signup} = userStore();
-
-    const user = [
-        {
-            type: "profile",
-            
-        }
-    ]
-
-    const handleChange = (e, name) => {
-        if (formType.includes(user)) {
-            return 
-        }
+  const handleChange = (e, name) => {
+    if (formType.includes(user)) {
+      return;
     }
+  };
   return (
     <VStack gap="2" align="flex-start" mt={mt || "10"}>
       <Title textStyle="md">{title}</Title>
